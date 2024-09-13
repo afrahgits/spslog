@@ -3,20 +3,20 @@ name: Deploy to GitHub Pages
 on:
   push:
     branches:
-      - main  # Make sure this matches the branch you are working on
+      - main  # Adjust this based on your setup
 
 jobs:
-  build:
+  deploy:
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v3  # Update to v3
+        uses: actions/checkout@v3  # Ensure you're using the latest version
 
       - name: Set up Node.js
-        uses: actions/setup-node@v3  # Update to v3
+        uses: actions/setup-node@v3
         with:
-          node-version: '20'  # Use the latest Node.js version (or '16' if you prefer)
+          node-version: '16'
 
       - name: Install dependencies
         run: npm install
@@ -29,3 +29,4 @@ jobs:
         with:
           branch: gh-pages
           folder: dist/sps_git
+          token: ${{ secrets.GITHUB_TOKEN }}  # This securely accesses the GITHUB_TOKEN
