@@ -3,7 +3,7 @@ name: Deploy to GitHub Pages
 on:
   push:
     branches:
-      - main  # or the branch you want to deploy from
+      - main  # Make sure this matches the branch you are working on
 
 jobs:
   build:
@@ -11,12 +11,12 @@ jobs:
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3  # Update to v3
 
       - name: Set up Node.js
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v3  # Update to v3
         with:
-          node-version: '16'  # Use the version of Node.js compatible with your Angular project
+          node-version: '20'  # Use the latest Node.js version (or '16' if you prefer)
 
       - name: Install dependencies
         run: npm install
@@ -27,5 +27,5 @@ jobs:
       - name: Deploy to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@v4
         with:
-          branch: gh-pages  # Deploy to the gh-pages branch
-          folder: dist/sps_git  # The folder where the built Angular project is located
+          branch: gh-pages
+          folder: dist/sps_git
