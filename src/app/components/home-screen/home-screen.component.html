@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SPS Log</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+        rel="stylesheet">
+    <style>
+        /*            
+table,
+th,
+td {
+    border: 1px solid black;
+    border-collapse: collapse;
+    text-align: center;
+}
+
+th,
+td {
+    padding: 5px;
+}
+
+th {
+    background-color: #e8ffdb;
+    color: #222222;
+} */
+    </style>
+</head>
+
+<body>
+    <div class="sps-wrap">
+
+        <div class="sps-header">
+            <h1 class="sps-1-title">Monthly Log for Sps</h1>
+        </div>
+        <div class="sps-dtl-wrap">
+            <div class="sps-text-wrap">
+                <h2 class="sps-2-title">Hi Mohammed!</h2>
+                <p class="sps-1-para">Choose an option from the below</p>
+                <img src="../../../assets/dashboard.webp" alt="">
+            </div>
+            <div class="sps-log-wrap">
+
+
+
+
+
+
+                <input type="file" class="custom-file-input" id="fileInput" accept=".xlsx, .xls,.xlsm, .csv"
+                    (change)="fileBrowseHandler($event)">
+                <!-- Custom label -->
+                <label for="fileInput" class=" sps-log-item sps-3-title" id="fileLabel">Upload File</label>
+                <!-- <button class="sps-log-item sps-3-title">Upload File</button> -->
+                <button class="sps-log-item sps-3-title" id="exportButton" (click)="exportToExcel()">Export to
+                    Excel</button>
+            </div>
+        </div>
+    </div>
+    <div class="row m-2">
+        <div class="card">
+            <div class="card-header">
+                <strong>Results</strong>
+            </div>
+            <div class="card-body">
+                <table id="myTable">
+                    <thead>
+                        <!-- Table Header -->
+                        <tr>
+                            <th style=" background-color: #e8ffdb; color: #222222; border: #222222 solid 1px; text-align: center;padding: 10px;"
+                                colspan="37">Monthly Log - </th>
+                        </tr>
+                        <tr>
+                            <th style=" background-color: #e8ffdb; color: #222222; border: #222222 solid 1px;text-align: center; padding: 10px;"
+                                colspan="37">Category I & II Wells, SPS & ALT SPS Equipment</th>
+                        </tr>
+                        <tr>
+                            <th style=" background-color: #e8ffdb; color: #222222; border: #222222 solid 1px;text-align: center;padding: 10px;"
+                                colspan="37">Field: Raudhatain (RA) (GC-15)</th>
+                        </tr>
+                        <tr>
+                            <th
+                                style=" color: #222222; border: #222222 solid 1px; border-collapse: collapse; text-align: center; ">
+                                Line</th>
+                            <th
+                                style=" color: #222222; border: #222222 solid 1px; border-collapse: collapse; text-align: center;">
+                                Well No</th>
+                            <th
+                                style=" color: #222222; border: #222222 solid 1px; border-collapse: collapse; text-align: center;">
+                                GC</th>
+                            <th
+                                style=" color: #222222; border: #222222 solid 1px; border-collapse: collapse; text-align: center;">
+                                Status</th>
+                            <th
+                                style=" color: #222222; border: #222222 solid 1px; border-collapse: collapse; text-align: center;">
+                                Rate</th>
+                            <th
+                                style=" color: #222222; border: #222222 solid 1px; border-collapse: collapse; text-align: center;">
+                                1</th>
+                            <th
+                                style=" color: #222222; border: #222222 solid 1px; border-collapse: collapse; text-align: center;">
+                                2</th>
+                            <th
+                                style=" color: #222222; border: #222222 solid 1px; border-collapse: collapse; text-align: center;">
+                                3</th>
+                            <th
+                                style=" color: #222222; border: #222222 solid 1px; border-collapse: collapse; text-align: center;">
+                                4</th>
+                            <th
+                                style=" color: #222222; border: #222222 solid 1px; border-collapse: collapse; text-align: center;">
+                                5</th>
+                            <th
+                                style=" color: #222222; border: #222222 solid 1px; border-collapse: collapse; text-align: center;">
+                                6</th>
+                            <th
+                                style=" color: #222222; border: #222222 solid 1px; border-collapse: collapse; text-align: center;">
+                                7</th>
+                            <th
+                                style=" color: #222222; border: #222222 solid 1px; border-collapse: collapse; text-align: center;">
+                                8</th>
+                            <th
+                                style=" color: #222222; border: #222222 solid 1px; border-collapse: collapse; text-align: center;">
+                                9</th>
+                            <th
+                                style=" color: #222222; border: #222222 solid 1px; border-collapse: collapse; text-align: center;">
+                                10</th>
+                            <th
+                                style=" color: #222222; border: #222222 solid 1px; border-collapse: collapse; text-align: center;">
+                                11</th>
+                            <th
+                                style=" color: #222222; border: #222222 solid 1px; border-collapse: collapse; text-align: center;">
+                                12</th>
+                            <th
+                                style=" color: #222222; border: #222222 solid 1px; border-collapse: collapse; text-align: center;">
+                                13</th>
+                            <th
+                                style=" color: #222222; border: #222222 solid 1px; border-collapse: collapse; text-align: center;">
+                                14</th>
+                            <th
+                                style=" color: #222222; border: #222222 solid 1px; border-collapse: collapse; text-align: center;">
+                                15</th>
+                            <th
+                                style=" color: #222222; border: #222222 solid 1px; border-collapse: collapse; text-align: center;">
+                                16</th>
+                            <th
+                                style=" color: #222222; border: #222222 solid 1px; border-collapse: collapse; text-align: center;">
+                                17</th>
+                            <th
+                                style=" color: #222222; border: #222222 solid 1px; border-collapse: collapse; text-align: center;">
+                                18</th>
+                            <th
+                                style=" color: #222222; border: #222222 solid 1px; border-collapse: collapse; text-align: center;">
+                                19</th>
+                            <th
+                                style=" color: #222222; border: #222222 solid 1px; border-collapse: collapse; text-align: center;">
+                                20</th>
+                            <th
+                                style=" color: #222222; border: #222222 solid 1px; border-collapse: collapse; text-align: center;">
+                                21</th>
+                            <th
+                                style=" color: #222222; border: #222222 solid 1px; border-collapse: collapse; text-align: center;">
+                                22</th>
+                            <th
+                                style=" color: #222222; border: #222222 solid 1px; border-collapse: collapse; text-align: center;">
+                                23</th>
+                            <th
+                                style=" color: #222222; border: #222222 solid 1px; border-collapse: collapse; text-align: center;">
+                                24</th>
+                            <th
+                                style=" color: #222222; border: #222222 solid 1px; border-collapse: collapse; text-align: center;">
+                                25</th>
+                            <th
+                                style=" color: #222222; border: #222222 solid 1px; border-collapse: collapse; text-align: center;">
+                                26</th>
+                            <th
+                                style=" color: #222222; border: #222222 solid 1px; border-collapse: collapse; text-align: center;">
+                                27</th>
+                            <th
+                                style=" color: #222222; border: #222222 solid 1px; border-collapse: collapse; text-align: center;">
+                                28</th>
+                            <th
+                                style=" color: #222222; border: #222222 solid 1px; border-collapse: collapse; text-align: center;">
+                                29</th>
+                            <th
+                                style=" color: #222222; border: #222222 solid 1px; border-collapse: collapse; text-align: center;">
+                                30</th>
+                            <th
+                                style=" color: #222222; border: #222222 solid 1px; border-collapse: collapse; text-align: center;">
+                                31</th>
+                            <th
+                                style=" color: #222222; border: #222222 solid 1px; border-collapse: collapse; text-align: center;">
+                                Total Minutes</th>
+                        </tr>
+                    </thead>
+                    <tbody *ngFor="let item of resultList;let i=index;">
+                        <!-- Row 2 -->
+                        <tr>
+                            <td style=" color: #222222; border: #222222 solid 1px; border-collapse: collapse; text-align: center; padding: 5px;"
+                                rowspan="5">{{i+1}}</td>
+                            <td style=" color: #222222; border: #222222 solid 1px; border-collapse: collapse; text-align: center; padding: 5px;"
+                                rowspan="5">{{item.well}}</td>
+                            <td style=" color: #222222; border: #222222 solid 1px; border-collapse: collapse; text-align: center; padding: 5px;"
+                                rowspan="5">GC</td>
+                            <td
+                                style=" color: #222222; border: #222222 solid 1px; border-collapse: collapse; text-align: center; padding: 5px;">
+                                Run Min.</td>
+                            <td
+                                style=" color: #222222; border: #222222 solid 1px; border-collapse: collapse; text-align: center; padding: 5px;">
+                                100%</td>
+                            <td style=" color: #222222; border: #222222 solid 1px; border-collapse: collapse; text-align: center; padding: 5px;"
+                                *ngFor="let runTime of item.runTimeList">{{runTime?.time>0?runTime?.time:''}}</td>
+                            <!-- <td style=" color: #222222; border: #222222 solid 1px; border-collapse: collapse; text-align: center; padding: 5px;"></td> -->
+                        </tr>
+                        <tr>
+                            <td style=" color: #222222; border: #222222 solid 1px; border-collapse: collapse; text-align: center; padding: 5px;"
+                                rowspan="4">Off Min.</td>
+                            <td
+                                style=" color: #222222; border: #222222 solid 1px; border-collapse: collapse; text-align: center; padding: 5px;">
+                                50%</td>
+                            <td
+                                style=" color: #222222; border: #222222 solid 1px; border-collapse: collapse; text-align: center; padding: 5px;">
+                            </td>
+                            <td
+                                style=" color: #222222; border: #222222 solid 1px; border-collapse: collapse; text-align: center; padding: 5px;">
+                            </td>
+                            <td
+                                style=" color: #222222; border: #222222 solid 1px; border-collapse: collapse; text-align: center; padding: 5px;">
+                            </td>
+                            <td
+                                style=" color: #222222; border: #222222 solid 1px; border-collapse: collapse; text-align: center; padding: 5px;">
+                            </td>
+                            <td
+                                style=" color: #222222; border: #222222 solid 1px; border-collapse: collapse; text-align: center; padding: 5px;">
+                            </td>
+                            <td
+                                style=" color: #222222; border: #222222 solid 1px; border-collapse: collapse; text-align: center; padding: 5px;">
+                            </td>
+                            <td
+                                style=" color: #222222; border: #222222 solid 1px; border-collapse: collapse; text-align: center; padding: 5px;">
+                            </td>
+                            <td
+                                style=" color: #222222; border: #222222 solid 1px; border-collapse: collapse; text-align: center; padding: 5px;">
+                            </td>
+                            <td
+                                style=" color: #222222; border: #222222 solid 1px; border-collapse: collapse; text-align: center; padding: 5px;">
+                            </td>
+                            <td
+                                style=" color: #222222; border: #222222 solid 1px; border-collapse: collapse; text-align: center; padding: 5px;">
+                            </td>
+                            <td
+                                style=" color: #222222; border: #222222 solid 1px; border-collapse: collapse; text-align: center; padding: 5px;">
+                            </td>
+                            <td
+                                style=" color: #222222; border: #222222 solid 1px; border-collapse: collapse; text-align: center; padding: 5px;">
+                            </td>
+                            <td
+                                style=" color: #222222; border: #222222 solid 1px; border-collapse: collapse; text-align: center; padding: 5px;">
+                            </td>
+                            <td
+                                style=" color: #222222; border: #222222 solid 1px; border-collapse: collapse; text-align: center; padding: 5px;">
+                            </td>
+                            <td
+                                style=" color: #222222; border: #222222 solid 1px; border-collapse: collapse; text-align: center; padding: 5px;">
+                            </td>
+                            <td
+                                style=" color: #222222; border: #222222 solid 1px; border-collapse: collapse; text-align: center; padding: 5px;">
+                            </td>
+                            <td
+                                style=" color: #222222; border: #222222 solid 1px; border-collapse: collapse; text-align: center; padding: 5px;">
+                            </td>
+                            <td
+                                style=" color: #222222; border: #222222 solid 1px; border-collapse: collapse; text-align: center; padding: 5px;">
+                            </td>
+                            <td
+                                style=" color: #222222; border: #222222 solid 1px; border-collapse: collapse; text-align: center; padding: 5px;">
+                            </td>
+                            <td
+                                style=" color: #222222; border: #222222 solid 1px; border-collapse: collapse; text-align: center; padding: 5px;">
+                            </td>
+                            <td
+                                style=" color: #222222; border: #222222 solid 1px; border-collapse: collapse; text-align: center; padding: 5px;">
+                            </td>
+                            <td
+                                style=" color: #222222; border: #222222 solid 1px; border-collapse: collapse; text-align: center; padding: 5px;">
+                            </td>
+                            <td
+                                style=" color: #222222; border: #222222 solid 1px; border-collapse: collapse; text-align: center; padding: 5px;">
+                            </td>
+                            <td
+                                style=" color: #222222; border: #222222 solid 1px; border-collapse: collapse; text-align: center; padding: 5px;">
+                            </td>
+                            <td
+                                style=" color: #222222; border: #222222 solid 1px; border-collapse: collapse; text-align: center; padding: 5px;">
+                            </td>
+                            <td
+                                style=" color: #222222; border: #222222 solid 1px; border-collapse: collapse; text-align: center; padding: 5px;">
+                            </td>
+                            <td
+                                style=" color: #222222; border: #222222 solid 1px; border-collapse: collapse; text-align: center; padding: 5px;">
+                            </td>
+                            <td
+                                style=" color: #222222; border: #222222 solid 1px; border-collapse: collapse; text-align: center; padding: 5px;">
+                            </td>
+                            <td
+                                style=" color: #222222; border: #222222 solid 1px; border-collapse: collapse; text-align: center; padding: 5px;">
+                            </td>
+                            <td
+                                style=" color: #222222; border: #222222 solid 1px; border-collapse: collapse; text-align: center; padding: 5px;">
+                            </td>
+                            <td
+                                style=" color: #222222; border: #222222 solid 1px; border-collapse: collapse; text-align: center; padding: 5px;">
+                            </td>
+                            <td
+                                style=" color: #222222; border: #222222 solid 1px; border-collapse: collapse; text-align: center; padding: 5px;">
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td
+                                style=" color: #222222; border: #222222 solid 1px; border-collapse: collapse; text-align: center; padding: 5px;">
+                                25%</td>
+                            <td
+                                style=" color: #222222; border: #222222 solid 1px; border-collapse: collapse; text-align: center; padding: 5px;">
+                            </td>
+                            <td
+                                style=" color: #222222; border: #222222 solid 1px; border-collapse: collapse; text-align: center; padding: 5px;">
+                            </td>
+                            <td
+                                style=" color: #222222; border: #222222 solid 1px; border-collapse: collapse; text-align: center; padding: 5px;">
+                            </td>
+                            <td
+                                style=" color: #222222; border: #222222 solid 1px; border-collapse: collapse; text-align: center; padding: 5px;">
+                            </td>
+                            <td
+                                style=" color: #222222; border: #222222 solid 1px; border-collapse: collapse; text-align: center; padding: 5px;">
+                            </td>
+                            <td
+                                style=" color: #222222; border: #222222 solid 1px; border-collapse: collapse; text-align: center; padding: 5px;">
+                            </td>
+                            <td
+                                style=" color: #222222; border: #222222 solid 1px; border-collapse: collapse; text-align: center; padding: 5px;">
+                            </td>
+                            <td
+                                style=" color: #222222; border: #222222 solid 1px; border-collapse: collapse; text-align: center; padding: 5px;">
+                            </td>
+                            <td
+                                style=" color: #222222; border: #222222 solid 1px; border-collapse: collapse; text-align: center; padding: 5px;">
+                            </td>
+                            <td
+                                style=" color: #222222; border: #222222 solid 1px; border-collapse: collapse; text-align: center; padding: 5px;">
+                            </td>
+                            <td
+                                style=" color: #222222; border: #222222 solid 1px; border-collapse: collapse; text-align: center; padding: 5px;">
+                            </td>
+                            <td
+                                style=" color: #222222; border: #222222 solid 1px; border-collapse: collapse; text-align: center; padding: 5px;">
+                            </td>
+                            <td
+                                style=" color: #222222; border: #222222 solid 1px; border-collapse: collapse; text-align: center; padding: 5px;">
+                            </td>
+                            <td
+                                style=" color: #222222; border: #222222 solid 1px; border-collapse: collapse; text-align: center; padding: 5px;">
+                            </td>
+                            <td
+                                style=" color: #222222; border: #222222 solid 1px; border-collapse: collapse; text-align: center; padding: 5px;">
+                            </td>
+                            <td
+                                style=" color: #222222; border: #222222 solid 1px; border-collapse: collapse; text-align: center; padding: 5px;">
+                            </td>
+                            <td
+                                style=" color: #222222; border: #222222 solid 1px; border-collapse: collapse; text-align: center; padding: 5px;">
+                            </td>
+                            <td
+                                style=" color: #222222; border: #222222 solid 1px; border-collapse: collapse; text-align: center; padding: 5px;">
+                            </td>
+                            <td
+                                style=" color: #222222; border: #222222 solid 1px; border-collapse: collapse; text-align: center; padding: 5px;">
+                            </td>
+                            <td
+                                style=" color: #222222; border: #222222 solid 1px; border-collapse: collapse; text-align: center; padding: 5px;">
+                            </td>
+                            <td
+                                style=" color: #222222; border: #222222 solid 1px; border-collapse: collapse; text-align: center; padding: 5px;">
+                            </td>
+                            <td
+                                style=" color: #222222; border: #222222 solid 1px; border-collapse: collapse; text-align: center; padding: 5px;">
+                            </td>
+                            <td
+                                style=" color: #222222; border: #222222 solid 1px; border-collapse: collapse; text-align: center; padding: 5px;">
+                            </td>
+                            <td
+                                style=" color: #222222; border: #222222 solid 1px; border-collapse: collapse; text-align: center; padding: 5px;">
+                            </td>
+                            <td
+                                style=" color: #222222; border: #222222 solid 1px; border-collapse: collapse; text-align: center; padding: 5px;">
+                            </td>
+                            <td
+                                style=" color: #222222; border: #222222 solid 1px; border-collapse: collapse; text-align: center; padding: 5px;">
+                            </td>
+                            <td
+                                style=" color: #222222; border: #222222 solid 1px; border-collapse: collapse; text-align: center; padding: 5px;">
+                            </td>
+                            <td
+                                style=" color: #222222; border: #222222 solid 1px; border-collapse: collapse; text-align: center; padding: 5px;">
+                            </td>
+                            <td
+                                style=" color: #222222; border: #222222 solid 1px; border-collapse: collapse; text-align: center; padding: 5px;">
+                            </td>
+                            <td
+                                style=" color: #222222; border: #222222 solid 1px; border-collapse: collapse; text-align: center; padding: 5px;">
+                            </td>
+                            <td
+                                style=" color: #222222; border: #222222 solid 1px; border-collapse: collapse; text-align: center; padding: 5px;">
+                            </td>
+                            <td
+                                style=" color: #222222; border: #222222 solid 1px; border-collapse: collapse; text-align: center; padding: 5px;">
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td
+                                style=" color: #222222; border: #222222 solid 1px; border-collapse: collapse; text-align: center; padding: 5px;">
+                                0%</td>
+                            <td style=" color: #222222; border: #222222 solid 1px; border-collapse: collapse; text-align: center; padding: 5px;"
+                                *ngFor="let tripTime of item?.tripList">{{tripTime?.time>0?tripTime?.time:''}}</td>
+                            <!-- <td style=" color: #222222; border: #222222 solid 1px; border-collapse: collapse; text-align: center; padding: 5px;"></td> -->
+                        </tr>
+
+                        <tr>
+                            <td
+                                style=" color: #222222; border: #222222 solid 1px; border-collapse: collapse; text-align: center; padding: 5px;">
+                                -100%</td>
+                            <td style=" color: #222222; border: #222222 solid 1px; border-collapse: collapse; text-align: center; padding: 5px;"
+                                *ngFor="let deduction of item?.costDeductionList">
+                                {{deduction?.time>0?deduction?.time:''}}</td>
+                            <!-- <td style=" color: #222222; border: #222222 solid 1px; border-collapse: collapse; text-align: center; padding: 5px;"></td> -->
+                        </tr>
+                    </tbody>
+                </table>
+
+
+
+            </div>
+
+        </div>
+    </div>
+
+
+    <div class="loader-overlay" *ngIf="loading">
+        <div class="loader"></div>
+    </div>
+
+</body>
+
+</html>
