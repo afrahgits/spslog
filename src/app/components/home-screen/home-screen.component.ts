@@ -99,7 +99,9 @@ export class HomeScreenComponent implements OnInit {
       }
     });
     this.wrongEntriesList = this.wrongEntriesList.filter((n, i) => this.wrongEntriesList.indexOf(n) === i);
-    Swal.fire('Wrong Entries in found in these Wells!', this.wrongEntriesList.toString(), 'warning')
+    if(this.wrongEntriesList.length>0){
+      Swal.fire('Wrong Entries in found in these Wells!', this.wrongEntriesList.toString(), 'warning');
+    }
     this.loading = false;
   }
 
@@ -150,7 +152,7 @@ export class HomeScreenComponent implements OnInit {
       runTime = 24 * 60;
       dailyTripTime = 0;
       const previousEntry: any[] = wellInfo.filter((x: any) => new Date(x.Date) < new Date(item.Date) && x["Trip Time"] != null);
-      const nexEntry: any[] = wellInfo.filter((x: any) => new Date(x.Date) > new Date(item.Date) && x["Restart Time"] != null);
+      const nexEntry: any[] = wellInfo.filter((x: any) => new Date(x.Date) < new Date(item.Date) && x["Restart Time"] != null);
       previousEntry.forEach(prev => {
         if (new Date(item.Date) > new Date(prev["Date"])) {
           dailyTripTime = 1440;
@@ -158,10 +160,14 @@ export class HomeScreenComponent implements OnInit {
           return;
         }
       });
-      if (nexEntry?.length == 0) {
-        runTime = 24 * 60;
-        dailyTripTime = 0;
-      }
+      nexEntry.forEach(prev => {
+        if (new Date(item.Date) > new Date(prev["Date"])) {
+          runTime = 24 * 60;
+          dailyTripTime = 0;
+          return;
+        }
+      });
+      
     } else if (workingType === WorkingType.Restarted) {
       const idCountMap = wellInfo.reduce((acc: any, dup: any) => {
         acc[dup.Date] = (acc[dup.Date] || 0) + 1;
@@ -196,8 +202,16 @@ export class HomeScreenComponent implements OnInit {
 
     } else if (workingType === WorkingType.StartNotStopped) {
       var tripDate = new Date(item['Trip Time']);
-      runTime = this.convertToMinutes(tripDate?.getHours(), tripDate.getMinutes(), tripDate?.getSeconds());
+      var currentDate = new Date(item['Date']);
+      if(tripDate.getDate()===currentDate.getDate()){
+        runTime = this.convertToMinutes(tripDate?.getHours(), tripDate.getMinutes(), tripDate?.getSeconds());
       dailyTripTime = 1440 - runTime;
+      }
+      else if (item['Status']==="OFF"){
+        runTime=0;
+        dailyTripTime=1440;
+
+      }
     } else if (workingType === WorkingType.Stopped) {
       var restartDate = new Date(item['Restart Time']);
       runTime = this.convertToMinutes(restartDate?.getHours(), restartDate.getMinutes(), restartDate?.getSeconds());
