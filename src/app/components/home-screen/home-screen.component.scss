@@ -110,10 +110,10 @@ table#myTable {
         margin-top: 20px;
     }
 
-    h3.sps-3-title {
-        font-size: 16px;
-        text-align: center;
-    }
+    // h3.sps-3-title {
+    //     font-size: 16px;
+    //     text-align: center;
+    // }
 
     a.sps-log-item {
         padding: 0;
@@ -130,8 +130,11 @@ table#myTable {
 
     .sps-3-title {
         font-size: 16px;
-        border-radius: 10px;
-        width: 120px;
+        padding: 10px;
+
+    }
+    .row.m-2 {
+        overflow: auto;
     }
 }
 
@@ -184,4 +187,5 @@ table#myTable {
     100% {
         transform: rotate(360deg);
     }
+    
 }
